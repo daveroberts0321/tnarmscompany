@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 # Create your models here.
 class Category(models.Model):
@@ -40,11 +41,6 @@ class Component(models.Model):
     """Unicode representation of Component."""
     return f'Component: {self.name}, Color: {self.color}, Inventory: {self.amount}'
 
-  def save(self):
-    """Save method for Component."""
-    pass
-
-
   # TODO: Define custom methods here
 
 
@@ -63,6 +59,7 @@ class Product(models.Model):
   created = models.DateField("Date Created", auto_now=False, auto_now_add=True)
   updated = models.DateField("Date Updated", auto_now=True, auto_now_add=False)
   isactive = models.BooleanField(default=True)
+  isfeatured = models.BooleanField(default=True)
 
 
   class Meta:
@@ -74,15 +71,12 @@ class Product(models.Model):
 
   def __str__(self):
     """Unicode representation of Product."""
-    pass
+    return f'Product: {self.name}, Price: {self.price}, Components: {self.components.name},'
 
-  def save(self):
-    """Save method for Product."""
-    pass
 
   def get_absolute_url(self):
     """Return absolute url for Product."""
-    return ('')
+    return (f'/{self.category.name}/{self.name}/')
 
   # TODO: Define custom methods here
 

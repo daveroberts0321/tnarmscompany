@@ -2,6 +2,21 @@ from django.contrib import admin
 from .models import *
 
 # Register your models here.
-admin.site.register(Component)
-admin.site.register(Product)
+@admin.register(Component)
+class ComponentAdmin(admin.ModelAdmin):
+  '''Admin View for Component'''
+  
+
+
+@admin.register(Product)
+class ProductAdmin(admin.ModelAdmin):
+  '''Admin View for Product'''  
+  list_filter = ('isactive',) 
+  date_hierarchy = 'updated'
+  ordering = ('updated','created')
+
+
 admin.site.register(Category)
+class CategoryAdmin(admin.ModelAdmin):
+  list_display = ['name', 'slug']
+  prepopulated_fields = {'slug':('name')}
