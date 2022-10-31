@@ -1,21 +1,54 @@
 from django.db import models
 from django.urls import reverse
+from django_resized import ResizedImageField
+from django.utils.html import mark_safe
+
+CATEGORY = [
+  ('ar15','ar15'),
+  ('ar308','ar308'),
+  ('tac9','tac9'),
+  ('tn9p','tn9p'),
+  ('80%','80%'),
+  ('parts','parts'),
+]
+
+
+
+
+
+
 
 # Create your models here.
 class Category(models.Model):
   """Model definition for Category."""
-  name = models.CharField("Category Name", max_length=50, db_index = True)
+  name = models.CharField("Category Name",choices=CATEGORY, max_length=50, db_index = True)
   slug = models.SlugField(unique= True)
-
+  mainimg = ResizedImageField(size=[800, 600], upload_to='static/images/', default='static/images/default.jpg')
+  subtext = models.TextField(null=True, blank=True)
+  desc = models.TextField(null=True, blank=True)
 
   # TODO: Define fields here
 
   class Meta:
     """Meta definition for Category."""
-
+    ordering = ["name"]
     verbose_name = 'Category'
     verbose_name_plural = 'Categories'
 
+  @property
+  def thumbnail_preview(self):
+    if self.thumbnail:
+        _thumbnail = get_thumbnail(self.thumbnail,
+                                '300x300',
+                                upscale=False,
+                                crop=False,
+                                quality=100)
+        return format_html('<img src="{}" width="{}" height="{}">'.format(_thumbnail.url, _thumbnail.width, _thumbnail.height))
+    return ""
+
+
+  def get_absolute_url(self):
+        return reverse("category", kwargs={"pk": self.pk})
 
 
   def __str__(self):
@@ -55,12 +88,22 @@ class Product(models.Model):
   shortdesc = models.CharField("Short Desc", max_length=50)
   longdesc = models.TextField("Long Desc")
   price = models.DecimalField("Product Base Price", max_digits=5, decimal_places=2)
-  mainimg = models.ImageField("Main Image", upload_to='images/', height_field=None, width_field=None, max_length=None)
+  mainimg = ResizedImageField(size=[800, 600], upload_to='static/images/', default='static/images/default.jpg')
   created = models.DateField("Date Created", auto_now=False, auto_now_add=True)
   updated = models.DateField("Date Updated", auto_now=True, auto_now_add=False)
   isactive = models.BooleanField(default=True)
   isfeatured = models.BooleanField(default=True)
 
+  @property
+  def thumbnail_preview(self):
+    if self.thumbnail:
+        _thumbnail = get_thumbnail(self.thumbnail,
+                                '300x300',
+                                upscale=False,
+                                crop=False,
+                                quality=100)
+        return format_html('<img src="{}" width="{}" height="{}">'.format(_thumbnail.url, _thumbnail.width, _thumbnail.height))
+    return ""
 
   class Meta:
     """Meta definition for Product."""
@@ -76,7 +119,7 @@ class Product(models.Model):
 
   def get_absolute_url(self):
     """Return absolute url for Product."""
-    return (f'/{self.category.name}/{self.name}/')
+    return reverse('pages:productdetail', args=[str(self.id)])
 
   # TODO: Define custom methods here
 

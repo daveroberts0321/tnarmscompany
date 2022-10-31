@@ -1,0 +1,24 @@
+{% extends '_base.html' %}
+
+{% block title %}About page{% endblock %}
+
+{% block content %}
+{% for object in context %}
+<h1>{{object.category.name}}</h1>
+
+<div class="row text-center data-masonry='{"percentPosition": true }' align-items-start">
+  
+  <div class="card mx-auto mt-3 shadow" style="width:18rem;">
+    <img src="{{ object.mainimg.url }}" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">{{object.name}}</h5>
+      <h6 class="card-subtitle mb-2 text-muted ">{{object.subtext}}</h6>
+      <p class="card-text">{{object.shortdesc}}</p>
+      <p class="card-text"><em>{{object.longdesc}}</em></p>
+      <h3 class="card-text">{{object.price}}</h3>
+      <a class="btn btn-primary btn-sm " href="{{object.get_absolute_url}}" role="button"><em>{{object.name}} Page</em></a>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock content %}

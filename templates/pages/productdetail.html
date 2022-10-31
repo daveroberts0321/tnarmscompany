@@ -1,0 +1,23 @@
+{% extends '_base.html' %}
+
+{% block title %}{{object.category.name}}//{{object.name}}{% endblock %}
+
+{% block content %}
+<h1>{{object.category.name}}/{{object.name}}</h1>
+<p>Product Detail view. Need to add the cart functionality </p>
+<div class="row text-center data-masonry='{"percentPosition": true }' align-items-start">
+  
+  <div class="card mx-auto mt-3 shadow" style="width:18rem;">
+    <img src="{{ object.mainimg.url }}" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">{{object.name}}</h5>
+      <h6 class="card-subtitle mb-2 text-muted ">{{object.subtext}}</h6>
+      <p class="card-text">{{object.shortdesc}}</p>
+      <p class="card-text"><em>{{object.longdesc}}</em></p>
+      <h3 class="card-text">{{object.price}}</h3>
+      
+    </div>
+  </div>
+
+</div>
+{% endblock content %}
