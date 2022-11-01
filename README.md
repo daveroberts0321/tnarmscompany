@@ -1,3 +1,34 @@
+### TN Arms Co Store Site 20221101
+
+Django based ecommerce site built on top of DjangoX for the user signup
+# isort and flake8 for styling and testing 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 > A batteries-included Django starter project. To learn more try the books [Django for Beginners](https://djangoforbeginners.com), [Django for APIs](https://djangoforapis.com), and [Django for Professionals](https://djangoforprofessionals.com).
 
 ## 🚀 Features

@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from .models import Category, Component, Product 
+
+from .models import Category, Component, Product
 
 
 # Context preprocessor views here. Can see in settings.py
@@ -9,3 +10,7 @@ def categories(request):
     'category':Category.objects.all(),
     'product':Product.objects.all(),
   }
+
+#cart 
+def cart_summary(request):
+  return render(request, 'store/cart/summary.html')

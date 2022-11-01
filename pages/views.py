@@ -1,5 +1,7 @@
-from django.views.generic import TemplateView, ListView, DetailView
-from store.models import Product, Category
+from django.views.generic import DetailView, ListView, TemplateView
+
+from store.models import Category, Product
+
 
 #staticpages Views 
 class HomePageView(ListView):# listings by category
@@ -25,7 +27,7 @@ class TnArms15View(ListView):#successfully connected
         context = super().get_context_data(**kwargs)
         # Add in a QuerySet of all the Ar15 Category Data 
         context['context']= Product.activeproducts.filter(category__name__contains="ar15").all()
-        context['categoryobject']= Category.objects.filter(name ="ar15").all()
+        context['categoryobject']= Category.objects.filter(name__contains ="ar15").all()
         return context
 
 class Ar308View(ListView):

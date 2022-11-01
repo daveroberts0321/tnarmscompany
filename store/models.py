@@ -1,7 +1,7 @@
 from django.db import models
 from django.urls import reverse
-from django_resized import ResizedImageField
 from django.utils.html import mark_safe
+from django_resized import ResizedImageField
 
 CATEGORY = [
   ('ar15','ar15'),
@@ -128,4 +128,7 @@ class Product(models.Model):
     return reverse('pages:productdetail', args=[str(self.id)])
 
   # TODO: Define custom methods here
+
+################CART Models with AJAX Fuctionality ##########################
+
 
