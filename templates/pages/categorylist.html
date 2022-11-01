@@ -1,13 +1,14 @@
 {% extends '_base.html' %}
 
-{% block title %}About page{% endblock %}
+{% block title %}Testing{% endblock %}
 
 {% block content %}
+
 {% for object in context %}
-<h1>{{object.category.name}}</h1>
+
 
 <div class="row text-center data-masonry='{"percentPosition": true }' align-items-start">
-  
+  <h1>{{object.name}}</h1>
   <div class="card mx-auto mt-3 shadow" style="width:18rem;">
     <img src="{{ object.mainimg.url }}" class="card-img-top" alt="...">
     <div class="card-body">

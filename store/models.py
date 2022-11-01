@@ -12,12 +12,6 @@ CATEGORY = [
   ('parts','parts'),
 ]
 
-
-
-
-
-
-
 # Create your models here.
 class Category(models.Model):
   """Model definition for Category."""
@@ -34,6 +28,7 @@ class Category(models.Model):
     ordering = ["name"]
     verbose_name = 'Category'
     verbose_name_plural = 'Categories'
+    
 
   @property
   def thumbnail_preview(self):
@@ -76,6 +71,13 @@ class Component(models.Model):
 
   # TODO: Define custom methods here
 
+#product manager to only return isactive products 
+class ProductManager(models.Manager):
+  def get_queryset(self):
+        return super().get_queryset().filter(isactive=True)
+
+  
+
 
 class Product(models.Model):
   """Model definition for Product."""
@@ -93,6 +95,10 @@ class Product(models.Model):
   updated = models.DateField("Date Updated", auto_now=True, auto_now_add=False)
   isactive = models.BooleanField(default=True)
   isfeatured = models.BooleanField(default=True)
+  #modelManager to only return isactive products
+  objects=models.Manager()
+  activeproducts= ProductManager()
+
 
   @property
   def thumbnail_preview(self):

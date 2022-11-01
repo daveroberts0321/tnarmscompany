@@ -12,5 +12,6 @@ urlpatterns = [
     path('tac9/', Tac9View.as_view(), name='tac9'),
     path('tn9p/', Tn9pView.as_view(), name='tn9p'),
     path('parts/', PartsView.as_view(), name='parts'),
+    path('80s/', BlankView.as_view(), name='80s'),
     path('product/<int:pk>',ProductView.as_view(), name='productdetail')
 ]
