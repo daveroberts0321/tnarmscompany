@@ -13,5 +13,8 @@ urlpatterns = [
     path('tn9p/', Tn9pView.as_view(), name='tn9p'),
     path('parts/', PartsView.as_view(), name='parts'),
     path('80s/', BlankView.as_view(), name='80s'),
-    path('product/<int:pk>',ProductView.as_view(), name='productdetail')
+    #product detail page
+    path('product/<int:pk>',ProductView.as_view(), name='productdetail'),
+    ##Cart##
+    #path('cart/', CartView.as_view(), name='cart'),
 ]

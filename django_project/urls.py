@@ -8,6 +8,7 @@ urlpatterns = [
     path("accounts/", include("allauth.urls")),
     path("store/", include("store.urls")),
     path("", include("pages.urls")),
+    path("unicorn/", include("django_unicorn.urls")),
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 if settings.DEBUG:

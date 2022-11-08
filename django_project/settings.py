@@ -29,6 +29,9 @@ INSTALLED_APPS = [
     "allauth.account",
     "crispy_forms",
     "debug_toolbar",
+    "django_unicorn",
+    'django_extensions',
+    'widget_tweaks',
     # Local
     "accounts",
     "pages",

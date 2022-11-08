@@ -3,19 +3,19 @@ from django.urls import reverse
 from django.utils.html import mark_safe
 from django_resized import ResizedImageField
 
-CATEGORY = [
-  ('ar15','ar15'),
-  ('ar308','ar308'),
-  ('tac9','tac9'),
-  ('tn9p','tn9p'),
-  ('80%','80%'),
-  ('parts','parts'),
-]
+from model_utils.fields import StatusField
+from model_utils import Choices #https://django-model-utils.readthedocs.io/en/latest/fields.html
+
+#Review for addeed model functionality https://django-model-utils.readthedocs.io/en/latest/fields.html
+
 
 # Create your models here.
 class Category(models.Model):
   """Model definition for Category."""
-  name = models.CharField("Category Name",choices=CATEGORY, max_length=50, db_index = True)
+  CATEGORY = Choices('ar15', 'ar308', 'tac9','tn9p','80%','parts')
+  
+  
+  name = StatusField(choices_name='CATEGORY', max_length=50, db_index = True)
   slug = models.SlugField(unique= True)
   mainimg = ResizedImageField(size=[800, 600], upload_to='static/images/', default='static/images/default.jpg')
   subtext = models.TextField(null=True, blank=True)
@@ -129,6 +129,6 @@ class Product(models.Model):
 
   # TODO: Define custom methods here
 
-################CART Models with AJAX Fuctionality ##########################
+################CART Models with Unicorn Functionality ##########################
 
 

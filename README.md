@@ -1,6 +1,54 @@
 ### TN Arms Co Store Site 20221101
 
-Django based ecommerce site built on top of DjangoX for the user signup
+Django based ecommerce site built on top of DjangoX for the user signup and accounts
+
+Uses Django-unicorn for front-end functionality starting at Shopping cart
+
+
+
+dependencies:
+asgiref==3.5.2
+beautifulsoup4==4.11.1
+cachetools==4.2.4
+certifi==2022.9.24
+cffi==1.15.1
+charset-normalizer==2.1.1
+coverage==6.5.0
+cryptography==38.0.1
+decorator==4.4.2
+defusedxml==0.7.1
+Django==4.0.4
+django-allauth==0.50.0
+django-crispy-forms==1.14.0
+django-debug-toolbar==3.2.4
+django-extensions==3.2.1
+django-model-utils==4.2.0
+django-resized==1.0.2
+django-unicorn==0.48.0
+django-widget-tweaks==1.4.12
+flake8==5.0.4
+flake8-django==1.1.5
+idna==3.4
+isort==5.10.1
+mccabe==0.7.0
+oauthlib==3.2.2
+orjson==3.8.1
+Pillow==9.2.0
+psycopg2-binary==2.9.3
+pycodestyle==2.9.1
+pycparser==2.21
+pyflakes==2.5.0
+PyJWT==2.6.0
+python3-openid==3.2.0
+requests==2.28.1
+requests-oauthlib==1.3.1
+shortuuid==1.0.9
+soupsieve==2.3.2.post1
+sqlparse==0.4.3
+tzdata==2022.5
+unicorn==2.0.1
+urllib3==1.26.12
+whitenoise==6.0.0
 # isort and flake8 for styling and testing 
 
 
