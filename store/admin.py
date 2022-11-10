@@ -7,9 +7,6 @@ from .models import *
 @admin.register(Component)
 class ComponentAdmin(admin.ModelAdmin):
   '''Admin View for Component'''
-  
-
-
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
   '''Admin View for Product'''  
@@ -29,3 +26,5 @@ class CategoryAdmin(admin.ModelAdmin):
 
     thumbnail_preview.short_description = 'Thumbnail Preview'
     thumbnail_preview.allow_tags = True
+
+  admin.site.register(CartItem)

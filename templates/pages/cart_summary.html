@@ -1,0 +1,16 @@
+{% extends '_base.html' %}
+{% load unicorn %}
+{% block title %}{{object.category.name}}//{{object.name}}{% endblock %}
+
+{% block content %}
+{% unicorn 'cart' user=request.user.pk product=product %}
+<p>cart Summary</p>
+{{products}}
+
+{% comment %}
+
+{% unicorn 'cart' user=request.user.pk product=product %}
+
+{% endcomment %}
+
+{% endblock content %}

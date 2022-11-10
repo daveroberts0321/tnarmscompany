@@ -2,11 +2,16 @@ from django.db import models
 from django.urls import reverse
 from django.utils.html import mark_safe
 from django_resized import ResizedImageField
+from django.conf import settings
+
+from django.contrib.auth import get_user_model
 
 from model_utils.fields import StatusField
 from model_utils import Choices #https://django-model-utils.readthedocs.io/en/latest/fields.html
 
 #Review for addeed model functionality https://django-model-utils.readthedocs.io/en/latest/fields.html
+
+# User reference 
 
 
 # Create your models here.
@@ -76,8 +81,6 @@ class ProductManager(models.Manager):
   def get_queryset(self):
         return super().get_queryset().filter(isactive=True)
 
-  
-
 
 class Product(models.Model):
   """Model definition for Product."""
@@ -131,4 +134,24 @@ class Product(models.Model):
 
 ################CART Models with Unicorn Functionality ##########################
 
+class CartItem(models.Model):
+  """Products added to the Cart ( Django Unicorn Component)."""
+
+  product = models.ForeignKey(Product,null=True, on_delete=models.SET_NULL)
+  user = models.ForeignKey(settings.AUTH_USER_MODEL, default="Guest", on_delete=models.SET_NULL, null=True)
+  quantity = models.PositiveIntegerField(default=1)
+  added = models.DateTimeField("Date/Time Added", auto_now=False, auto_now_add=False)
+  
+  
+  # TODO: Define fields here
+
+  class Meta:
+    """Meta definition for CartItem."""
+
+    verbose_name = 'CartItem'
+    verbose_name_plural = 'CartItems'
+
+  def __str__(self):
+    """Unicode representation of CartItem."""
+    return f'Customer: {self.user.email}, Product: {self.product.name}'
 

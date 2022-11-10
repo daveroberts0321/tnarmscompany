@@ -13,4 +13,6 @@ def categories(request):
 
 #cart 
 def cart_summary(request):
-  return render(request, 'store/cart/summary.html')
+  products = Product.objects.all()
+  context = {'products':products}
+  return render(request, 'pages/cart_summary.html', context)

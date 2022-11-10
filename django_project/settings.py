@@ -80,7 +80,17 @@ TEMPLATES = [
         },
     },
 ]
-
+UNICORN = {
+    "APPS": ["store",],
+    "CACHE_ALIAS": "default",
+    "MINIFY_HTML": False,
+    "MINIFIED": True,
+    "SERIAL": {
+        "ENABLED": False,
+        "TIMEOUT": 60,
+    },
+    "SCRIPT_LOCATION": "after",
+}
 # DATABASES
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
