@@ -10,6 +10,48 @@
 <meta name="description" content="A framework for launching new Django projects quickly.">
 <meta name="author" content="">
 <link rel="shortcut icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}">
+<!-- get cookie/ device ID https://www.youtube.com/watch?v=-7a8sth8gKo&t=467s dennis ivy-->
+<script type="text/javascript">
+
+  function getCookie(name) { // from django docs in getCookie
+      var cookieValue = null;
+      if (document.cookie && document.cookie !== '') {
+          var cookies = document.cookie.split(';');
+          for (var i = 0; i < cookies.length; i++) {
+              var cookie = cookies[i].trim();
+              // Does this cookie string begin with the name we want?
+              if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                  cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                  break;
+              }
+          }
+      }
+      return cookieValue;
+  }
+
+
+  function uuidv4() { //generates a unique uuid key for each cart session by device id
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+      var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+      return v.toString(16);
+    });
+  }
+
+
+
+
+  let device = getCookie('device')
+
+  if (device == null || device == undefined){
+    device = uuidv4() // sets device to the above function uuidv4
+  }
+
+  document.cookie ='device=' + device + ";domain=;path=/"
+
+</script>
+<!--Cookie/ ID Script ending -->
+
+
 {% unicorn_scripts %}  <!--https://www.django-unicorn.com/docs/installation/-->
 {% block css %}
 <!-- Bootstrap CSS -->

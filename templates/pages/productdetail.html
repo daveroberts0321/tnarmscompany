@@ -15,7 +15,9 @@
       <p class="card-text">{{object.shortdesc}}</p>
       <p class="card-text"><em>{{object.longdesc}}</em></p>
       <h3 class="card-text">{{object.price}}</h3>
-      
+      <button
+      unicorn:click="add_item( {{ object.pk }} )"
+      >Add to Cart</button>      
     </div>
   </div>
 

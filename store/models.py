@@ -138,12 +138,14 @@ class CartItem(models.Model):
   """Products added to the Cart ( Django Unicorn Component)."""
 
   product = models.ForeignKey(Product,null=True, on_delete=models.SET_NULL)
-  user = models.ForeignKey(settings.AUTH_USER_MODEL, default="Guest", on_delete=models.SET_NULL, null=True)
+  user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True)
   quantity = models.PositiveIntegerField(default=1)
   added = models.DateTimeField("Date/Time Added", auto_now=False, auto_now_add=False)
   
   
-  # TODO: Define fields here
+  # TODO: Unicorn Functionality
+
+  
 
   class Meta:
     """Meta definition for CartItem."""
